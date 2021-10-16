@@ -2,6 +2,19 @@
 class BikeOnAGrid {
     private $currentX, $currentY, $currentDirection;
 
+    public function __get($property) {
+        if (property_exists($this, $property)) {
+            return $this->$property;
+        }
+    }
+    
+    public function __set($property, $value) {
+        if (property_exists($this, $property)) {
+            $this->$property = $value;
+        }
+        return $this;
+    }
+
     public function isValidCommand($command) {
         if(!isset($command[1])) {
             exit("Error: No command is passed as an argument.\n");
@@ -22,24 +35,38 @@ class BikeOnAGrid {
     }
 
     public function place($x, $y, $direction) {
-        // FIXME: Temporary assumption: The passed x & y are within the boundary
+        // The passed x & y must be within the boundary
+        if(($x > 6 || $x < 0) || ($y > 6 || $y < 0)) {
+            exit("Error: Bike placement must be within the 7x7 grid boundaries - i.e. between 0 to 6");
+        }
         $this->currentX = $x;
         $this->currentY = $y;
         $this->currentDirection = $direction;
     }
 
     public function forward() {
-        // FIXME: Check exit of the bike from grid
         if($this->currentDirection === 'NORTH') {
+            if($this->currentY == 6) {
+                exit("Error: Bike placement must be within the 7x7 grid boundaries - i.e. between 0 to 6");
+            }
             $this->currentY++;
         }
         else if($this->currentDirection === 'EAST') {
+            if($this->currentX == 6) {
+                exit("Error: Bike placement must be within the 7x7 grid boundaries - i.e. between 0 to 6");
+            }
             $this->currentX++;
         }
         else if($this->currentDirection === 'SOUTH') {
+            if($this->currentY == 0) {
+                exit("Error: Bike placement must be within the 7x7 grid boundaries - i.e. between 0 to 6");
+            }
             $this->currentY--;
         }
         if($this->currentDirection === 'WEST') {
+            if($this->currentX == 0) {
+                exit("Error: Bike placement must be within the 7x7 grid boundaries - i.e. between 0 to 6");
+            }
             $this->currentX--;
         }
     }
