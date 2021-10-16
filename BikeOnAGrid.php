@@ -73,5 +73,9 @@ class BikeOnAGrid {
             $this->currentDirection = 'NORTH';
         }
     }
+
+    public function gpsReport() {
+        echo "($this->currentX,$this->currentY), $this->currentDirection";
+    }
 }
 ?>

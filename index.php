@@ -18,5 +18,8 @@ if($isValidCommand === true) {
     if($argv[1] === 'TURN_RIGHT') {
         $instance->turnRight();
     }
+    if($argv[1] === 'GPS_REPORT') {
+        $instance->gpsReport();
+    }
 }
 ?>
