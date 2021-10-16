@@ -27,5 +27,51 @@ class BikeOnAGrid {
         $this->currentY = $y;
         $this->currentDirection = $direction;
     }
+
+    public function forward() {
+        // FIXME: Check exit of the bike from grid
+        if($this->currentDirection === 'NORTH') {
+            $this->currentY++;
+        }
+        else if($this->currentDirection === 'EAST') {
+            $this->currentX++;
+        }
+        else if($this->currentDirection === 'SOUTH') {
+            $this->currentY--;
+        }
+        if($this->currentDirection === 'WEST') {
+            $this->currentX--;
+        }
+    }
+
+    public function turnLeft() {
+        if($this->currentDirection === 'NORTH') {
+            $this->currentDirection = 'WEST';
+        }
+        else if($this->currentDirection === 'EAST') {
+            $this->currentDirection = 'NORTH';
+        }
+        else if($this->currentDirection === 'SOUTH') {
+            $this->currentDirection = 'EAST';
+        }
+        if($this->currentDirection === 'WEST') {
+            $this->currentDirection = 'SOUTH';
+        }
+    }
+
+    public function turnRight() {
+        if($this->currentDirection === 'NORTH') {
+            $this->currentDirection = 'EAST';
+        }
+        else if($this->currentDirection === 'EAST') {
+            $this->currentDirection = 'SOUTH';
+        }
+        else if($this->currentDirection === 'SOUTH') {
+            $this->currentDirection = 'WEST';
+        }
+        if($this->currentDirection === 'WEST') {
+            $this->currentDirection = 'NORTH';
+        }
+    }
 }
 ?>
