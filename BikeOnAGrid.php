@@ -16,18 +16,8 @@ class BikeOnAGrid {
     }
 
     public function isValidCommand($command) {
-        if(!isset($command[1])) {
-            exit("Error: No command is passed as an argument.\n");
-        }
-        else if($command[1] !== 'PLACE' && $command[1] !== 'FORWARD' && $command[1] !== 'TURN_LEFT' 
-        && $command[1] !== 'TURN_RIGHT' && $command[1] !== 'GPS_REPORT') {
-            exit("Error: Please pass a valid command from PLACE, FORWARD, TURN_LEFT, TURN_RIGHT, GPS_REPORT.\n");
-        }
-        else if($command[1] === 'PLACE') {
-            // If the arguments for PLACE command do not exist
-            if(!isset($command[2])) {
-                exit("Error: Valid arguments in the form of X,Y,DIRECTION is not passed for the command PLACE.\n");
-            }
+        if($command !== 'FORWARD' && $command !== 'TURN_LEFT' && $command !== 'TURN_RIGHT' && $command !== 'GPS_REPORT') {
+            exit("Error: Please pass a valid command from FORWARD, TURN_LEFT, TURN_RIGHT, GPS_REPORT.\n");
         }
         
         // A valid command
@@ -81,7 +71,7 @@ class BikeOnAGrid {
         else if($this->currentDirection === 'SOUTH') {
             $this->currentDirection = 'EAST';
         }
-        if($this->currentDirection === 'WEST') {
+        else if($this->currentDirection === 'WEST') {
             $this->currentDirection = 'SOUTH';
         }
     }
@@ -96,13 +86,13 @@ class BikeOnAGrid {
         else if($this->currentDirection === 'SOUTH') {
             $this->currentDirection = 'WEST';
         }
-        if($this->currentDirection === 'WEST') {
+        else if($this->currentDirection === 'WEST') {
             $this->currentDirection = 'NORTH';
         }
     }
 
     public function gpsReport() {
-        echo "($this->currentX,$this->currentY), $this->currentDirection";
+        echo "($this->currentX,$this->currentY), $this->currentDirection \n";
     }
 }
 ?>
