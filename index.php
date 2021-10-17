@@ -10,7 +10,7 @@ for($i = 1; $i < count($argv); $i++) {
     // Bike must be placed in the grid first
     if($i == 1) {
         if($argv[$i] !== "PLACE") {
-            exit("Error: Bike must be placed in the grid first. First command must be a PLACE command. \n");
+            exit("Error: Bike must be placed in the grid first. I.e. The first command must be a PLACE command. \n");
         }
         else {
             // If the arguments for PLACE command do not exist

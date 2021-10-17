@@ -17,7 +17,7 @@ class BikeOnAGrid {
 
     public function isValidCommand($command) {
         if($command !== 'FORWARD' && $command !== 'TURN_LEFT' && $command !== 'TURN_RIGHT' && $command !== 'GPS_REPORT') {
-            exit("Error: Please pass a valid command from FORWARD, TURN_LEFT, TURN_RIGHT, GPS_REPORT.\n");
+            exit("Error: Please pass a valid command from FORWARD, TURN_LEFT, TURN_RIGHT or GPS_REPORT for index 2+.\n");
         }
         
         // A valid command
