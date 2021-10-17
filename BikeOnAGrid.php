@@ -27,7 +27,7 @@ class BikeOnAGrid {
     public function place($x, $y, $direction) {
         // The passed x & y must be within the boundary
         if(($x > 6 || $x < 0) || ($y > 6 || $y < 0)) {
-            exit("Error: Bike placement must be within the 7x7 grid boundaries - i.e. between 0 to 6");
+            exit("Error: Bike placement must be within the 7 x 7 grid boundaries - i.e. between 0 to 6\n");
         }
         $this->currentX = $x;
         $this->currentY = $y;
@@ -37,25 +37,25 @@ class BikeOnAGrid {
     public function forward() {
         if($this->currentDirection === 'NORTH') {
             if($this->currentY == 6) {
-                exit("Error: Bike placement must be within the 7x7 grid boundaries - i.e. between 0 to 6");
+                exit("Error: Bike cannot move any further/out of 7 x 7 grid\n");
             }
             $this->currentY++;
         }
         else if($this->currentDirection === 'EAST') {
             if($this->currentX == 6) {
-                exit("Error: Bike placement must be within the 7x7 grid boundaries - i.e. between 0 to 6");
+                exit("Error: Bike cannot move any further/out of 7 x 7 grid\n");
             }
             $this->currentX++;
         }
         else if($this->currentDirection === 'SOUTH') {
             if($this->currentY == 0) {
-                exit("Error: Bike placement must be within the 7x7 grid boundaries - i.e. between 0 to 6");
+                exit("Error: Bike cannot move any further/out of 7 x 7 grid\n");
             }
             $this->currentY--;
         }
         if($this->currentDirection === 'WEST') {
             if($this->currentX == 0) {
-                exit("Error: Bike placement must be within the 7x7 grid boundaries - i.e. between 0 to 6");
+                exit("Error: Bike cannot move any further/out of 7 x 7 grid\n");
             }
             $this->currentX--;
         }
@@ -92,7 +92,7 @@ class BikeOnAGrid {
     }
 
     public function gpsReport() {
-        echo "($this->currentX,$this->currentY), $this->currentDirection \n";
+        echo "($this->currentX, $this->currentY), $this->currentDirection \n";
     }
 }
 ?>
